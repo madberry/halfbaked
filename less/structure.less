@@ -1,0 +1,109 @@
+//
+// Structure and Layout Styles
+// --------------------------------------------------
+// Includes header, footer, and the various wrapper element styles.
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+  background-color: @bodyBackgroundColor;
+}
+
+// WRAPPER - Wraps around Header, Main, Sidebar and Footer Sections
+// --------------------------------------------------
+//
+
+#wrapper {
+  background: @wrapperBackground;
+  display: block;
+  margin: 0 auto;
+  width: 1152px;
+  .clearfix();
+}
+
+
+// HEADER STRUCTURE
+// --------------------------------------------------
+//
+#site-header {
+  background: @headerBackground;
+    hgroup {
+        #paddings > .all(24);
+            // Site Name
+           h1 a {
+              color: @headerLinkColor;
+              display: block;
+              .font-size(@headerSiteNameFontSize);
+                  &:hover {
+                      color: @headerLinkColorHover;
+                  }
+          }
+          // Site Tagline
+          h2 {
+              color: @headerFontColor;
+              .font-size(@headerTaglineSize);
+              font-weight: normal;
+              #margins > .all(0);
+          }
+     }
+}
+
+.header-widget {
+  float: right;
+  #paddings > .all(24);
+}
+
+// MAIN WRAPPER - Wraps Primary (Post/Page) Content and Sidebar
+// --------------------------------------------------
+//
+
+#main-wrapper {
+  margin: 0 auto;
+  #paddings > .side(24);
+  .clearfix();
+}
+
+// PRIMARY WRAPPER - Wraps Page/Post Content
+// --------------------------------------------------
+//
+
+#primary {
+  float: left;
+  margin: 0 1.0416666666666665%;
+  #paddings > .top(24);
+  width: 72.91666666666666%;
+}
+
+
+// SECONDARY WRAPPER - Wraps Sidebar
+// --------------------------------------------------
+//
+
+#secondary {
+  float: right;
+  margin: 0 1.0416666666666665%;
+  width: 22.916666666666664%;
+}
+
+// FOOTER
+// --------------------------------------------------
+//
+
+#site-footer {
+  background: @footerBackground;
+  #margins > .top(24);
+  margin-left: auto;
+  margin-right: auto;
+  #paddings > .side(24);
+  min-height: 24px;
+  .clearfix();
+    .site-info a {
+      color: @footerLinkColor;
+      .font-size(14);
+        &:hover {
+          color: @footerLinkColorHover;
+        }
+    }
+}

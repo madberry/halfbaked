@@ -1,51 +1,72 @@
-<?php get_header(); ?>
-<div class="grid_8">
-<section id="main-content">
-<?php if (have_posts()): ?>
-	<?php if ( is_category() ) : ?>
-	<h1 class="archive-title"><?php single_cat_title(); ?></h1>
-	<?php elseif( is_tag() ) : ?>
-	<h1 class="archive-title">Posts Tagged &ldquo;<?php single_tag_title(); ?>&rdquo;</h1>
-	<?php elseif (is_day()) : ?>
-	<h1 class="archive-title">Archive for <?php the_time('F jS, Y'); ?></h1>
-	<?php elseif (is_month()) : ?>
-	<h1 class="archive-title">Archive for <?php the_time('F, Y'); ?></h1>
-	<?php elseif (is_year()) : ?>
-	<h1 class="archive-title">Archive for <?php the_time('Y'); ?></h1>
-	<?php elseif (is_author()) : ?>
-	<h1 class="archive-title">Author Archive</h1>
-	<?php elseif (isset($_GET['paged']) && !empty($_GET['paged'])) : ?>
-	<h1 class="archive-title">Blog Archives</h1>
-	<?php endif; ?>
-	<?php rewind_posts();?>
-	<?php while (have_posts()) : the_post(); ?>
+<?php
+/**
+ * The template for displaying Archive pages.
+ *
+ * Used to display archive-type pages if nothing more specific matches a query.
+ * For example, puts together date-based pages if no date.php file exists.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package WordPress
+ * @subpackage Half_Baked_Base
+ * @since Half-Baked Base 1.0
+ */
 
-	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-		<header>
-			<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-			<p class="meta"><i class="icon-calendar"></i><time datetime="<?php the_time('F jS, Y')?>">&nbsp;&nbsp;Posted <?php echo the_time('F jS, Y') ?></time> <?php if ( comments_open() ) : ?> <span class="comment-meta"><i class="icon-comment"></i>&nbsp;&nbsp;<a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a></span><?php endif; ?></p>
-		</header>
+get_header(); ?>
 
-		<?php the_content(); ?>
+<section id="primary" class="archive">
 
-		<footer>
-			<p class="meta"><span class="category"><i class="icon-folder-open"></i> Posted in <?php if (function_exists('parentless_categories')) parentless_categories(','); else the_category( ', ', 'multiple' ); ?></span></p>
-		</footer>
-	</article>
+		<?php if ( have_posts() ) : ?>
 
-<?php endwhile; else: ?>
-	<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-<?php endif; ?>
+			<header id="archive-page-header">
+				<h1 class="archive-title"><?php
+					if ( is_day() ) {
+						printf( __( 'Daily Archives: %s', 'half_baked_base' ), '<span>' . get_the_date() . '</span>' );
+					} elseif ( is_month() ) {
+						printf( __( 'Monthly Archives: %s', 'half_baked_base' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'half_baked_base' ) ) . '</span>' );
+					} elseif ( is_year() ) {
+						printf( __( 'Yearly Archives: %s', 'half_baked_base' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'half_baked_base' ) ) . '</span>' );
+					} elseif ( is_tag() ) {
+						printf( __( 'Tag Archives: %s', 'half_baked_base' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+					} elseif ( is_category() ) {
+						printf( __( 'Category Archives: %s', 'half_baked_base' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+					} else {
+						_e( 'Blog Archives', 'half_baked_base' );
+					}
+				?></h1>
 
-<?php if (show_posts_nav()) : ?>
-<nav class="paging">
-	<?php if(function_exists('wp_pagenavi')) : wp_pagenavi(); else : ?>
-		<div class="prev"><?php next_posts_link('&laquo; Previous Posts') ?></div>
-		<div class="next"><?php previous_posts_link('Next Posts &raquo;') ?></div>
-	<?php endif; ?>
-</nav>
-<?php endif; ?>
+				<?php
+					// Show an optional tag description.
+					if ( is_tag() ) {
+						$tag_description = tag_description();
+						if ( $tag_description )
+							echo '<div class="archive-meta">' . $tag_description . '</div>';
+					}
+					// Show an optional category description.
+					if ( is_category() ) {
+						$category_description = category_description();
+						if ( $category_description )
+							echo '<div class="archive-meta">' . $category_description . '</div>';
+					}
+				?>
+			</header><!-- /. archive-header -->
 
-</section>
-</div><!--/.grid_8 -->
+			<?php
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
+
+				get_template_part( 'content', 'post' );
+
+			endwhile;
+
+			half_baked_content_nav( 'nav-below' );
+			?>
+
+		<?php else : ?>
+			<?php get_template_part( 'content', 'none' ); ?>
+		<?php endif; ?>
+
+</section><!-- #primary .archive-->
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

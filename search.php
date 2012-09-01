@@ -1,40 +1,45 @@
-<?php get_header(); ?>
-<div class="grid_8">
-<section id="main-content">
+<?php
+/**
+ * The template for displaying Search Results pages.
+ *
+ * @package WordPress
+ * @subpackage Half_Baked_Base
+ * @since Half-Baked Base 1.0
+ */
 
+get_header(); ?>
 
-		<h1 class="pagetitle">Search Results: &ldquo;<?php the_search_query(); ?>&rdquo; <?php if (get_query_var('paged')) echo ' &mdash; Page '.get_query_var('paged'); ?></h1>
-	<?php endif; ?>
+	<section id="primary" class="search">
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+		<?php if ( have_posts() ) : ?>
 
-		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<header>
-				<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-				<p class="meta"><time datetime="<?php the_time('Y-m-d')?>">Posted <?php the_time('F jS, Y') ?></time> <span class="author">by <?php the_author() ?></span>. <?php if ( comments_open() ) : ?><a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a><?php endif; ?></p>
+			<header class="page-header">
+				<h1><?php printf( __( 'Search Results for: %s', 'half_baked_base' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header>
 
-			<?php the_content(''); ?>
+			<?php /* Start the Loop */ ?>
+			<?php while ( have_posts() ) : the_post(); ?>
+				<?php get_template_part( 'content', 'post' ); ?>
+			<?php endwhile; ?>
 
-			<footer>
-				<span class="category">Posted in <?php if (function_exists('parentless_categories')) parentless_categories(','); else the_category( ', ', 'multiple' ); ?></span>
-				<?php the_tags('<span class="tags">Tagged as ', ', ', '</span>'); ?>
-			</footer>
-		</article>
+			<?php half_baked_content_nav( 'nav-below' ); ?>
 
-	<?php endwhile; else: ?>
-		<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-	<?php endif; ?>
+		<?php else : ?>
 
-	<?php if (show_posts_nav()) : ?>
-	<nav class="paging">
-		<?php if(function_exists('wp_pagenavi')) : wp_pagenavi(); else : ?>
-			<div class="prev"><?php next_posts_link('&laquo; Previous Posts') ?></div>
-			<div class="next"><?php previous_posts_link('Next Posts &raquo;') ?></div>
+			<article class="error404 post">
+				<header class="entry-header">
+					<h1><?php _e( 'Nothing Found', 'half_baked_base' ); ?></h1>
+				</header><!-- .entry-header -->
+
+				<div class="entry-content">
+					<p><?php _e( 'Sorry! I looked everywhere, but could not find anything that matched your search criteria. Please try again with some different keywords.', 'half_baked_base' ); ?></p>
+					<?php get_search_form(); ?>
+				</div><!-- .entry-content -->
+			</article><!-- .error404.post -->
+
 		<?php endif; ?>
-	</nav>
-	<?php endif; ?>
 
-</section>
-</div><!--/.grid_8 -->
+	</section><!-- #primary .search-->
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

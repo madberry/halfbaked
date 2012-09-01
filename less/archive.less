@@ -1,0 +1,50 @@
+//
+// Archive Page Stylings
+// --------------------------------------------------
+//
+
+#archive-page-header {
+    border-bottom: 1px solid @hrBorderColor;
+    #paddings > .bottom(24);
+}
+
+.archive-title {
+    color: @headingFontColor;
+    .font-size(18);
+    font-weight: 700;
+    text-transform: uppercase;
+        span {
+            color: @metaFontColor;
+        }
+
+    }
+
+ .archive-meta {
+    color: @metaFontColor;
+    .font-size(12);
+    #margins > .top(24);
+}
+
+
+#author-info {
+    max-width: 92%;
+    .clearfix();
+        .avatar-container {
+            .rounded(37px);
+            #margins > .side(8);
+                img {
+                    display: block;
+                    .rounded(36px);
+            }
+        }
+        #author-description {
+            float: left;
+            display: inline;
+            #paddings > .left(12);
+            width: 80%;
+        }
+    h3 {
+        margin: 0;
+        #paddings > .bottom(12);
+    }
+}

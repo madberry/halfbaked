@@ -1,22 +1,26 @@
-<?php get_header(); ?>
-<div class="grid_8">
-<section id="main-content">
+<?php
+/**
+ * The template for displaying all pages.
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site will use a
+ * different template.
+ *
+ * @package WordPress
+ * @subpackage Half_Baked_Base
+ * @since Half-Baked Base 1.0
+ */
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+get_header(); ?>
 
-	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-		<header>
-			<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+	<section id="primary" class="page">
 
-		</header>
+			<?php while ( have_posts() ) : the_post(); ?>
+				<?php get_template_part( 'content', 'page' ); ?>
+			<?php endwhile; ?>
 
-		<?php the_content(); ?>
+	</section><!-- #primary .page-->
 
-
-
-
-<?php endwhile; endif; ?>
-	</article>
-</section>
-</div><!--/.grid_8 -->
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

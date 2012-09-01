@@ -1,0 +1,129 @@
+//
+// Navigation Styles
+// --------------------------------------------------
+// Includes site navigation (navigation bar) and content navigation styles.
+
+
+// SITE NAVIGATION STYLES
+// --------------------------------------------------
+//
+#site-navigation {
+    background: @navMenuBackground;
+    border: 1px solid @navMenuBorderColor;
+    border-bottom: 0;
+    display: block;
+    width: 100%;
+    .clearfix();
+    ul {
+       margin: 0 auto;
+       display: block;
+        }
+    li {
+        display: inline;
+        float: left;
+        #margins > .left(0);
+            a {
+                border-left: 1px solid @navMenuItemBorderColor;
+                color: @navMenuLinkColor;
+                display: block;
+                .font-size(@navMenuFontSize);
+                #paddings > .all(8);
+                text-align: center;
+                text-transform: uppercase;
+                text-decoration: none;
+                    &:hover, &:focus {
+                        background: @navMenuBackgroundHover;
+                        color: @navMenuLinkColorHover;
+                    }
+                }
+                // displaying submenu on hover
+            &:hover > ul {
+                display: block;
+                border-left: 0;
+                }
+        }
+}
+
+// Site Navigation Submenu Styling
+// ------------------
+#site-navigation li ul {
+    background: @navSubmenuBackground;
+    display: none;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+        li {
+            padding-left: 0;
+            text-align: center;
+                a {
+                    border: 1px solid @navMenuBorderColor;
+                    border-top: 0;
+                    color: @navSubmenuLinkColor;
+                    display: block;
+                    .font-size(@navSubmenuFontSize);
+                    padding: 0;
+                    width: 120px;
+                        &:hover, &:focus {
+                            background: @navSubmenuBackgroundHover;
+                            color: @navSubmenuLinkColorHover;
+                        }
+                    }
+
+         }
+        ul {
+            top: 0;
+            left: 100%;
+        }
+}
+
+// Current Menu Item Styling
+// ------------------
+#site-navigation .current-menu-item > a,
+#site-navigation .current-menu-ancestor > a,
+#site-navigation .current_page_item > a,
+#site-navigation .current_page_ancestor > a {
+    background: @navMenuBackgroundCurrent;
+    color: @navMenuLinkColorCurrent;
+}
+
+// RESPONSIVE MENU
+// --------------------------------------------------
+//
+
+ .touchdown-list {
+        display: block;
+    }
+
+    .touchdown {
+        display: none;
+    }
+
+
+// CONTENT NAVIGATION STYLES
+// --------------------------------------------------
+//
+#nav-single {
+    #paddings > .all(24);
+}
+
+#nav-above {
+    display: none;
+    #paddings > .vert(24);
+}
+
+.paged #nav-above {
+    display: block;
+}
+
+.nav-previous,
+.previous-image {
+    float: left;
+    width: 50%;
+}
+
+.nav-next,
+.next-image {
+    float: right;
+    text-align: right;
+    width: 50%;
+}

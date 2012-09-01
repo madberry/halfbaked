@@ -1,0 +1,60 @@
+//
+// Posts and Page Styles
+// --------------------------------------------------
+//
+
+article {
+    border-bottom: 1px solid @hrBorderColor;
+    #paddings > .all(24);
+    .clearfix();
+}
+
+article.sticky {
+    border: 1px solid @hrBorderColor;
+    .drop-shadow(1px, 1px, 4px, .8);
+}
+// CONTENT HEADER
+// --------------------------------------------------
+//
+
+.entry-title,
+.entry-title a {
+    #margins > .bottom(24);
+}
+
+.error404 h1.span {
+    color: #bbb;
+}
+// CONTENT BODY
+// --------------------------------------------------
+//
+
+.entry-content {
+    .clearfix();
+}
+
+.page-links {
+    clear: both;
+}
+
+// CONTENT FOOTER
+// --------------------------------------------------
+//
+
+footer.entry-meta {
+    background: @contentFooterBackground;
+    color: @metaFontColor;
+    .font-size(12);
+    #margins > .top(24);
+    #paddings > .left(12);
+        a {
+            color: @metaLinkColor;
+                &:hover {
+                    color: @metaLinkColorHover;
+                }
+            }
+}
+
+footer .edit-link {
+    #margins > .vert(24);
+}

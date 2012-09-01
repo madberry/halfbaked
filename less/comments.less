@@ -1,0 +1,70 @@
+//
+// Comment Styles
+// --------------------------------------------------
+//
+
+.comments-link {
+    .font-size(12);
+    #margins > .vert(24);
+}
+
+    #comments {
+       ol {
+        list-style: none;
+       }
+        header {
+            #margins > .bottom(12);
+            position: relative;
+            .clearfix();
+            a {
+                    text-decoration: none;
+                }
+            cite {
+                display: block;
+                #margins > .left(48);
+                    &:before {
+                        content: none;
+                    }
+            }
+            time {
+                .font-size(12);
+                color: @metaFontColor;
+                display: block;
+                #margins > .left(48);
+            }
+        }
+}
+
+// COMMENT FORM
+// --------------------------------------------------
+//
+
+#respond {
+    #paddings > .all(24);
+        #reply-title {
+            margin: 0;
+        }
+        #cancel-comment-reply-link {
+            .font-size(12);
+            font-weight: normal;
+            #margins > .left(12);
+        }
+        form {
+            #margins > .vert(24);
+                input {
+                    width: 46.333333333%;
+                }
+                textarea {
+                    width: 79.666666667%
+                }
+        }
+        p {
+            .font-size(14);
+            .clearfix();
+        }
+        .form-allowed-tags {
+            color: @metaFontColor;
+            .font-size(12);
+            margin: 0;
+        }
+}

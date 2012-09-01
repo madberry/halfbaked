@@ -1,0 +1,47 @@
+/* Homepage Specific Styles
+-------------------------------------------------------------- */
+
+#primary.home {
+    #margins > .bottom(24);
+    width: 100%;
+    .clearfix();
+}
+
+.home-top {
+        #paddings > .side(24);
+            h1 {
+        #margins > .left(24);
+        }
+    }
+
+
+/* Homepage Widget (Sidebar) Styles
+-------------------------------------------------------------- */
+
+#home-bottom {
+    width: 100%;
+    .clearfix();
+        .home-widget {
+            float: left;
+            display: inline;
+            width: 31.25%;
+            margin: 0 1.0416666667%;
+        }
+        aside {
+             color: @homeWidgetFontColor;
+            .font-size(@homeWidgetFontSize);
+            #paddings > .left(24);
+                 a {
+                    color: @homeWidgetLinkColor;
+                        &:hover {
+                            color: @homeWidgetLinkColorHover;
+                        }
+                }
+                img {
+                    float: left;
+                    margin: 8px 24px 8px 0;
+                    margin: 0.5rem 1.5rem 0.5rem 0;
+                }
+            }
+
+}

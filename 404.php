@@ -1,11 +1,34 @@
-<?php get_header(); ?>
-<div class="grid_8">
-<section id="main-content">
+<?php
+/**
+ * The template for displaying 404 pages (Not Found).
+ *
+ * @package WordPress
+ * @subpackage Half_Baked_Base
+ * @since Half-Baked Base 1.0
+ */
 
-	<h1><?php _e("Sorry, Nothing was Found"); ?></h1>
-	<p><?php _e( 'Apologies, but the page you requested could not be found. Perhaps searching will help.' ); ?></p>
-	<?php get_search_form(); ?>
+get_header(); ?>
 
-</section>
-</div><!--/.grid_8 -->
+        	<div id="primary">
+
+			<article class="error404">
+				<header class="entry-header">
+					<h1><?php _e( 'Something is Missing', 'half_baked_base' ); ?> <span>:(</span></h1>
+				</header>
+
+				<div class="entry-content">
+
+            <p>Sorry, but the page you were trying to view does not exist.</p>
+            <p>It looks like this was the result of either:</p>
+            <ul>
+                <li>a mistyped address</li>
+                <li>an out-of-date link</li>
+            </ul>
+            <?php get_search_form(); ?>
+        </div><!-- .entry-content -->
+			</article><!-- .error404 -->
+
+	</div><!-- #primary -->
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

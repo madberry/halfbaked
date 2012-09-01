@@ -1,0 +1,29 @@
+/* Post Format Styles
+-------------------------------------------------------------- */
+
+article.format-aside h1 {
+	#margins > .bottom(24);
+}
+
+.aside-content {
+	background: darken(@contentBackgroundColor, 5%);
+	#paddings > .all(24);
+	.rounded(6px);
+		p {
+			color: lighten(@baseFontColor, 10%);
+			margin: 0;
+		}
+}
+
+article.format-quote .entry-content p {
+	margin: 0;
+	#paddings > .bottom(24);
+}
+
+article.format-quote .entry-content blockquote {
+	display: block;
+	.font-size(17);
+	color: @metaFontColor;
+	background: #efefef;
+	#paddings > .all(24);
+}

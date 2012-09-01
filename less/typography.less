@@ -1,0 +1,248 @@
+/* Typography
+-------------------------------------------------------------- */
+
+// Body
+// -------------------------
+body {
+  color: @baseFontColor;
+  font-size: @baseFontSize;
+  font-size: 1rem;
+  font-family: @baseFontFamily;
+  line-height: @baseTypographyRhythm;
+  text-rendering: optimizeLegibility;
+}
+
+
+// HEADINGS
+// --------------------------------------------------
+//
+h1 {
+  .font-size(32);
+  color: @headingFontColor;
+  font-family: @headingFontFamily;
+  font-weight: @headingFontWeight;
+    }
+
+h2 {
+  .font-size(28);
+  color: @headingFontColor;
+  font-family: @headingFontFamily;
+  font-weight: @headingFontWeight;
+}
+
+h3 {
+  .font-size(22);
+  color: @headingFontColor;
+  font-family: @headingFontFamily;
+  font-weight: @headingFontWeight;
+}
+
+h4 {
+  .font-size(20);
+  color: @headingFontColor;
+  font-family: @headingFontFamily;
+  font-weight: @headingFontWeight;
+}
+
+h5 {
+  .font-size(18);
+   color: @headingFontColor;
+   font-family: @headingFontFamily;
+   font-weight: @headingFontWeight;
+}
+
+h6 {
+  .font-size(16);
+  color: @headingFontColor;
+  font-family: @headingFontFamily;
+  font-weight: @headingFontWeight;
+}
+
+// LINKS
+// --------------------------------------------------
+//
+
+a {
+  color: @baseLinkColor;
+    &:hover {
+      color: @baseLinkColorHover;
+    }
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+    color: @headingLinkColor;
+    text-decoration: none;
+      &:hover {
+        color: @headingLinkColorHover;
+      }
+}
+
+// TEXT
+// --------------------------------------------------
+//
+
+p, ol, ul, dd {
+  .font-size(16);
+  #margins > .bottom(24);
+}
+
+p.lead {
+  .font-size(22);
+  #paddings > .vert(24);
+}
+
+// Styles for Content Only
+// ------------------
+#primary {
+    ul ul, ol ol, ul ol, ol ul {
+      #margins > .bottom(0);
+    }
+    ul {
+    list-style: disc outside;
+    }
+
+    ol {
+    list-style: decimal outside;
+    }
+
+    li {
+    #margins > .left(24);
+    }
+
+    blockquote,
+    q {
+      .font-size(18);
+      font-style: italic;
+      #paddings > .vert(24);
+      #paddings > .side(36);
+      position: relative;
+        &:before {
+          color: @monoFontColor;
+          content: '\201C';
+          display: block;
+          .font-size(60);
+          position: absolute;
+          top: -48;
+          left: 0;
+        }
+      }
+
+    cite {
+        color: @monoFontColor;
+        #margins > .side(24);
+        font-weight: 700;
+          &:before {
+            content: "\2014 \2009";
+          }
+    }
+
+    code,
+    pre {
+    border: 1px solid @hrBorderColor;
+    color: @monoFontColor;
+    display: block;
+    font-family: @monoFontFamily;
+    .font-size(14);
+    #margins > .vert(24);
+    #paddings > .all(24);
+    }
+}
+
+  abbr,
+  dfn {
+  border-bottom: 1px dotted @hrBorderColor;
+  cursor: help;
+  }
+
+acronym {
+  font-weight: 700;
+}
+
+  address {
+    border-left: 2px solid @hrBorderColor;
+    color: @metaFontColor;
+    display: block;
+    #margins > .bottom(24);
+    #paddings > .left(12);
+  }
+
+  big {
+    font-size: 150%;
+  }
+
+  del,
+  strike {
+    text-decoration: line-through;
+  }
+
+  dt {
+    font-weight: bold;
+    #margins > .left(24);
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  ins {
+    background: #faf5c9;
+  }
+  kbd {
+    background-color: #f7f7f7;
+    border: 1px solid @metaFontColor;
+    .font-size(14);
+    .drop-shadow(0, 1px, 0px, .2);
+    .rounded(3px);
+    display: inline-block;
+    #margins > .side(2);
+    #paddings > .all(4);
+    text-shadow: 0 1px 0 #fff;
+    white-space: nowrap;
+    max-width: 320px;
+    overflow: auto;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  sup, sub {
+    font-size: 60%;
+   vertical-align: baseline;
+   position: relative;
+   top: -0.5em;
+}
+  sub { top: 0.5em; }
+
+  table {
+    border-bottom: 1px solid @hrBorderColor;
+    #margins > .vert(24);
+    width: 90%;
+  }
+
+  th {
+    color: @tableHeadingFontColor;
+    .font-size(18);
+    font-weight: 500;
+    text-align: left;
+  }
+
+  td {
+    border-top: 1px solid @hrBorderColor;
+    #paddings > .all(6);
+  }
+
+  tt {
+    color: @monoFontColor;
+    font-family: @monoFontFamily;
+    .font-size(14);
+  }
+
+  var {
+    color: #008;
+    letter-spacing: 1px;
+  }

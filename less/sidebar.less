@@ -1,0 +1,82 @@
+// SIDEBAR
+// --------------------------------------------------
+//
+#secondary {
+    #paddings > .top(24);
+}
+
+#secondary aside {
+  #margins > .bottom(24);
+    p {
+        .font-size(@sidebarFontSize);
+    }
+    ul {
+        list-style: none;
+        #margins > .left(0);
+    }
+    li {
+    .font-size(@sidebarFontSize);
+    #margins > .left(0);
+    }
+    a {
+        color: @sidebarLinkColor;
+        &:hover {
+            color: @sidebarLinkColorHover;
+            }
+        }
+}
+
+// WIDGET STYLES
+// --------------------------------------------------
+//
+
+aside .widget-title {
+    color: @widgetTitleColor;
+    .font-size(@widgetTitleFontSize);
+    font-weight: 500;
+    #paddings > .vert(12);
+    text-transform: uppercase;
+}
+
+.widget ul ul {
+    #margins > .left(12);
+}
+
+.widget_recent_entries .post-date {
+    color: @metaFontColor;
+    .font-size(12);
+    #margins > .left(12);
+}
+
+#wp-calendar {
+    margin: 0;
+    width: 80%;
+    color: @metaFontColor;
+    .font-size(12);
+        caption {
+            .font-size(16);
+            font-weight: 700;
+            #paddings > .vert(8);
+        }
+        #next {
+            #paddings > .right(24);
+            text-align: right;
+        }
+}
+
+.widget_search label {
+    display: block;
+    .font-size(12);
+}
+
+.widget_search input[type="text"] {
+    border: 1px solid #ccc;
+    .rounded(3px);
+    #paddings > .all(6);
+}
+
+input#searchsubmit {
+    .nicebutton(@buttonGradientStart, @buttonTextColor);
+    .drop-shadow(0, 1px, 2px, 0.1);
+    #paddings > .all(8);
+    }

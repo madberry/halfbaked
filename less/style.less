@@ -1,0 +1,70 @@
+/*
+Theme Name: Half-Baked Base Theme
+Theme URI: http://bakedwp.com
+Author: Rachel Baker
+Author URI:
+Description: Built using the theme generator at http://bakedwp.com
+Version: 1.0
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+@import "variables.less";
+@import "mixins.less";
+@import "reset.less";
+@import "structure.less";
+@import "navigation.less";
+@import "typography.less";
+@import "content.less";
+@import "homepage.less";
+@import "archive.less";
+@import "sidebar.less";
+@import "media.less";
+@import "comments.less";
+@import "post-formats.less";
+@import "responsive.less";
+/* Misc. UI Elements
+-------------------------------------------------------------- */
+
+.assistive-text {
+    display: none;
+}
+
+#submit,
+button,
+.btn,
+.button {
+    .nicebutton(@buttonGradientStart, @buttonTextColor);
+    //.drop-shadow(0, 1px, 2px, 0.5);
+    .font-size(16);
+     #paddings > .all(8);
+}
+
+// Form Elements
+// ------------------
+
+label {
+    display: block;
+    line-height: 1.5;
+}
+
+input[type="text"] {
+    .font-size(14);
+    line-height: 1.0;
+    #paddings > .all(2);
+    border: 1px solid #d5d2ca;
+    .rounded(3px);
+ }
+
+textarea {
+    .font-size(14);
+    #paddings > .all(4);
+    border: 1px solid #d5d2ca;
+    .rounded(3px);
+    width: 80%;
+}
+
+.required {
+    color: red;
+}
+

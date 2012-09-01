@@ -1,0 +1,296 @@
+//
+// Mixins
+// --------------------------------------------------
+
+// TYPOGRAPHY Rhythm
+// --------------------------------------------------
+// TODO: Cite reference links
+// Set a font-size based on the @size provided in rem values with a pixel fallback.
+// Then set a line-height based on the body line-height (calculated as @size / @baseLineHeight)
+// Example if @size = 18 and @baseFontSize = 16, @baseLineHeight = 24:
+// font-size: 18px ( @size * 1px )
+// font-size: 1.125rem; ( (@size/@baseFontSize) * 1rem )
+// line-height: 1.3333333; ( (@baseLineHeight/@size) * 1rem )
+
+.font-size(@size) {
+   font-size: @size * 1px;
+   font-size: (@size/@baseFontSize) * 1rem;
+   .line-height(@size);
+  }
+
+.line-height(@size) when (@size > @baseLineHeight ) {
+  line-height: (@doubleHeight/@size) * 1;
+}
+.line-height(@size) when (@size =< @baseLineHeight ) {
+  line-height: (@baseLineHeight/@size) * 1;
+}
+
+// SPACING
+// --------------------------------------------------
+// TODO: Add explanation here
+#margins {
+
+	.all(@space) {
+		margin: @space * 1px;
+		margin: (@space/@baseFontSize) * 1rem;
+	}
+
+	.vert(@space) {
+		margin-top: @space * 1px;
+		margin-top: (@space/@baseFontSize) * 1rem;
+    margin-bottom: @space * 1px;
+    margin-bottom: (@space/@baseFontSize) * 1rem;
+	}
+
+	.side(@space) {
+		margin-right: @space * 1px;
+    margin-left: @space * 1px;
+		margin-right: (@space/@baseFontSize) * 1rem;
+    margin-left: (@space/@baseFontSize) * 1rem;
+	}
+
+	.top(@top) {
+	margin-top: @top * 1px;
+	margin-top: (@top/@baseFontSize) * 1rem;
+	}
+
+	.bottom(@bottom) {
+	margin-bottom: @bottom * 1px;
+	margin-bottom: (@bottom/@baseFontSize) * 1rem;
+	}
+
+	.right(@right){
+	margin-right: @right * 1px;
+	margin-right: (@right/@baseFontSize) * 1rem;
+	}
+
+	.left(@left){
+	margin-left: @left * 1px;
+	margin-left: (@left/@baseFontSize) * 1rem;
+	}
+
+}
+
+#paddings {
+
+    .all(@space) {
+        padding: @space * 1px;
+        padding: (@space/@baseFontSize) * 1rem;
+    }
+
+  .vert(@space) {
+    padding-top: @space * 1px;
+    padding-top: (@space/@baseFontSize) * 1rem;
+    padding-bottom: @space * 1px;
+    padding-bottom: (@space/@baseFontSize) * 1rem;
+  }
+
+	 .side(@space) {
+		padding-right: @space * 1px;
+    padding-left: @space * 1px;
+    padding-right: (@space/@baseFontSize) * 1rem;
+    padding-left: (@space/@baseFontSize) * 1rem;
+	}
+
+    .top(@top) {
+    padding-top: @top * 1px;
+    padding-top: (@top/@baseFontSize) * 1rem;
+    }
+
+    .bottom(@bottom) {
+    padding-bottom: @bottom * 1px;
+    padding-bottom: (@bottom/@baseFontSize) *1rem;
+    }
+
+    .right(@right){
+    padding-right: @right * 1px;
+    padding-right: (@right/@baseFontSize) * 1rem;
+    }
+
+    .left(@left){
+    padding-left: @left * 1px;
+    padding-left: (@left/@baseFontSize) * 1rem;
+    }
+
+}
+
+
+// BOX SHADOWS
+// --------------------------------------------------
+
+.inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
+  -webkit-box-shadow: inset
+  					  @horizontal @vertical @blur
+  					  rgba(0, 0, 0, @alpha);
+     -moz-box-shadow: inset
+     				  @horizontal @vertical @blur
+     				  rgba(0, 0, 0, @alpha);
+          box-shadow: inset
+          			  @horizontal @vertical @blur
+          			  rgba(0, 0, 0, @alpha);
+}
+
+.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+     -moz-box-shadow: @arguments;
+          box-shadow: @arguments;
+}
+
+.drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
+  -webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+  -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+  box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+}
+
+// BORDER RADIUS
+// --------------------------------------------------
+
+.rounded(@radius: 2px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+
+// BOX SIZING
+// --------------------------------------------------
+//
+
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+// GRADIENTS
+// --------------------------------------------------
+//
+
+#gradient {
+
+  .horizontal(@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image:    -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+    background-image:     -ms-linear-gradient(left, @startColor, @endColor); // IE10
+    background-image:      -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+    background-image:     linear-gradient(to right, @startColor, @endColor); // Standard
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@startColor),argb(@endColor))); // IE9 and down
+  }
+
+  .linear(@startColor: #555, @endColor: #333) {
+    background-color: mix(@startColor, @endColor, 60%);
+    background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image:    -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+    background-image:     -ms-linear-gradient(top, @startColor, @endColor); // IE10
+    background-image:      -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+    background-image:         linear-gradient(top, @startColor, @endColor); // Standard
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down
+	}
+
+}
+
+// Button Gradient
+// ------------------
+.gradientButton(@primaryColor, @secondaryColor, @textColor: #fff) {
+  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
+  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
+  color: @textColor;
+  cursor: pointer;
+  #gradient > .linear(@primaryColor, @secondaryColor);
+}
+
+// Button
+// ------------------
+
+.buttonBackground(@startColor, @endColor, @textColor: #fff) {
+  .gradientButton(@startColor, @endColor, @textColor);
+  *background-color: @endColor;
+}
+
+.nicebutton(@buttonColor, @textColor: #fff) {
+  background-color: @buttonColor;
+  color: @textColor;
+  //display:block;
+  position:relative;
+  text-decoration:none;
+  text-align:center;
+  border:1px solid rgba(0,0,0,0.4);
+  .rounded(6px);
+   //.drop-shadow(0, 2px, 8px, .1);
+  .drop-shadow(1px, 2px, 4px, .6);
+  transition:all 0.3s ease-out;
+  text-shadow:0 -1px 0 rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.2);
+  -webkit-font-smoothing: subpixel-antialiased;
+  &:hover {
+    color: @textColor;
+    .drop-shadow(6px, 2px, 8px, .1);
+    .inner-shadow(0, -20px, 20px, .5);
+  }
+  &:active {
+    top:1px;
+  }
+}
+
+
+// FORMS
+// --------------------------------------------------
+
+// Webkit-style focus
+// ------------------
+.tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// Block level inputs
+.input-block-level() {
+  display: block;
+  width: 100%;
+  min-height: 28px;        // Make inputs at least the height of their button counterpart
+  .box-sizing(border-box); // Makes inputs behave like true block-level elements
+}
+
+
+
+
+// UTILITY MIXINS
+// --------------------------------------------------
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix() {
+  zoom: 1;
+  	&:before,
+  	&:after {
+    	display: table;
+    	content: "";
+    	line-height: 0;
+  	}
+  	&:after {
+    	clear: both;
+  	}
+}
+
+// Center-align a block level element
+// ----------------------------------
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// IE7 inline-block
+// ----------------
+.ie7-inline-block() {
+  *display: inline; /* IE7 inline-block hack */
+  *zoom: 1;
+}
+

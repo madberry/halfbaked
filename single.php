@@ -1,28 +1,35 @@
-<?php get_header(); ?>
-<div class="grid_8">
-<section id="main-content">
+<?php
+/**
+ * The Template for displaying all single posts.
+ *
+ * @package WordPress
+ * @subpackage Half_Baked_Base
+ * @since Half-Baked Base 1.0
+ */
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+get_header(); ?>
 
-	<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+	<section id="primary" class="post">
 
-		<h2><a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a></h2>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-			<p class="meta"><i class="icon-calendar"></i><time datetime="<?php the_time('F jS, Y')?>">&nbsp;&nbsp;Posted <?php echo the_time('F jS, Y') ?></time> <?php if ( comments_open() ) : ?> <span class="comment-meta"><i class="icon-comment"></i>&nbsp;&nbsp;<a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a></span><?php endif; ?></p>
+				<?php get_template_part( 'content', get_post_format() ); ?>
 
+				<nav id="nav-single">
+					<h3 class="assistive-text"><?php _e( 'Post navigation', 'half_baked_base' ); ?></h3>
+					<span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span>', 'half_baked_base' ) . ' %title' ); ?></span>
+					<span class="nav-next"><?php next_post_link( '%link', '%title ' . __( '<span class="meta-nav">&rarr;</span>', 'half_baked_base' ) ); ?></span>
+				</nav><!-- #nav-single -->
 
-		<?php the_content(); ?>
+				<?php
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( comments_open() || '0' != get_comments_number() )
+						comments_template( '', true );
+				?>
 
-		<footer>
-		<p class="meta"><span class="category"><i class="icon-folder-open"></i> Posted in <?php if (function_exists('parentless_categories')) parentless_categories(','); else the_category( ', ', 'multiple' ); ?></span></p>
-		</footer>
-        <?php endwhile; endif; ?>
+			<?php endwhile; // end of the loop. ?>
 
+	</section><!-- #primary .post-->
 
-	<?php comments_template(); ?>
-
-
-</article>
-</section>
-</div><!--/.grid_8 -->
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -1,29 +1,38 @@
-<?php get_header(); ?>
-<div class="grid_8">
-<section id="main-content">
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>">
-<header>
-		<h2><a href="<?php the_permalink();?>" title="<?php the_title();?>"><?php the_title();?></a></h2>
-<p class="meta"><i class="icon-calendar"></i><time datetime="<?php the_time('F jS, Y')?>">&nbsp;&nbsp;Posted <?php echo the_time('F jS, Y') ?></time> <?php if ( comments_open() ) : ?> <span class="comment-meta"><i class="icon-comment"></i>&nbsp;&nbsp;<a class="comment" href="<?php the_permalink(); ?>#comments"><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></a></span><?php endif; ?></p>
-			</header>
-		<?php the_excerpt(); ?>
+<?php
+/**
+ * The main template file.
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package WordPress
+ * @subpackage Half_Baked_Base
+ * @since Half-Baked Base 1.0
+ */
 
-			<footer>
-			<p class="meta"><span class="category"><i class="icon-folder-open"></i> Posted in <?php if (function_exists('parentless_categories')) parentless_categories(','); else the_category( ', ', 'multiple' ); ?></span></p>
-			</footer>
-		</article>
+get_header(); ?>
 
-	<?php endwhile; endif; ?>
+	<div id="primary">
 
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+			<?php get_template_part( 'content', get_post_format() ); ?>
 
-	<nav class="paging">
-		<?php if(function_exists('wp_pagenavi')) : wp_pagenavi(); else : ?>
-			<div class="prev"><?php next_posts_link('&laquo; Previous Posts') ?></div>
-			<div class="next"><?php previous_posts_link('Next Posts &raquo;') ?></div>
-		<?php endif; ?>
-	</nav>
-</section>
-</div><!--/.grid_8 -->
+			<?php endwhile; ?>
 
+			<?php half_baked_content_nav( 'nav-below' ); ?>
+
+		<?php else : ?>
+
+			<article class="no-results not-found">
+				<?php get_template_part( 'content', 'none' ); ?>
+			</article><!-- .no-results -->
+
+		<?php endif; // end have_posts() check ?>
+
+	</div><!-- #primary -->
+
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
