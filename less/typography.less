@@ -17,24 +17,25 @@ body {
 // --------------------------------------------------
 //
 h1 {
-  .font-size(32);
+  .font-size(32, 2);
   color: @headingFontColor;
   font-family: @headingFontFamily;
   font-weight: @headingFontWeight;
     }
 
 h2 {
-  .font-size(28);
+  .font-size(28, 2);
   color: @headingFontColor;
   font-family: @headingFontFamily;
   font-weight: @headingFontWeight;
 }
 
 h3 {
-  .font-size(22);
+  .font-size(22, 1);
   color: @headingFontColor;
   font-family: @headingFontFamily;
   font-weight: @headingFontWeight;
+  #margins > .bottom(24);
 }
 
 h4 {
@@ -42,6 +43,7 @@ h4 {
   color: @headingFontColor;
   font-family: @headingFontFamily;
   font-weight: @headingFontWeight;
+  #margins > .bottom(24);
 }
 
 h5 {
@@ -49,6 +51,7 @@ h5 {
    color: @headingFontColor;
    font-family: @headingFontFamily;
    font-weight: @headingFontWeight;
+   #margins > .bottom(24);
 }
 
 h6 {

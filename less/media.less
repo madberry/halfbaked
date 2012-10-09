@@ -1,6 +1,28 @@
 /* Media Styles
 -------------------------------------------------------------- */
 
+// Images
+// -------------------------
+
+// Rounded corners
+.img-rounded {
+  .rounded(6px);
+}
+
+// Add polaroid-esque trim
+.img-polaroid {
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  .box-shadow(0 1px 3px rgba(0,0,0,.1));
+}
+
+// Perfect circle
+.img-circle {
+  .rounded(500px); // crank the border-radius so it works with most reasonably sized images
+}
+
 // IMAGE ALIGNMENT
 // --------------------------------------------------
 //

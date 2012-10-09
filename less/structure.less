@@ -27,33 +27,43 @@ body {
 // HEADER STRUCTURE
 // --------------------------------------------------
 //
+
 #site-header {
   background: @headerBackground;
     hgroup {
-        #paddings > .all(24);
-            // Site Name
-           h1 a {
-              color: @headerLinkColor;
-              display: block;
-              .font-size(@headerSiteNameFontSize);
-                  &:hover {
-                      color: @headerLinkColorHover;
-                  }
+      #paddings > .all(24);
+      display: block;
+      margin: 0 1.0416666667%;
+      width: 72.9166666667%;
+          h1 a {
+            color: @headerLinkColor;
+            display: block;
+            .font-size(@headerSiteNameFontSize, 2);
+                &:hover {
+                  color: @headerLinkColorHover;
+                }
           }
-          // Site Tagline
           h2 {
-              color: @headerFontColor;
-              .font-size(@headerTaglineSize);
-              font-weight: normal;
-              #margins > .all(0);
+            color: @headerFontColor;
+            .font-size(@headerTaglineSize);
+            font-weight: normal;
+            #margins > .all(0);
           }
      }
 }
 
 .header-widget {
   float: right;
-  #paddings > .all(24);
+  width: 22.9166666667%;
+  margin: 0 1.0416666667%;
+  #paddings > .top(24);
+      a {
+        color: #9c9c9c;
+      }
 }
+
+
+
 
 // MAIN WRAPPER - Wraps Primary (Post/Page) Content and Sidebar
 // --------------------------------------------------
@@ -71,9 +81,9 @@ body {
 
 #primary {
   float: left;
-  margin: 0 1.0416666666666665%;
+  margin: 0 1.0416666667%;
   #paddings > .top(24);
-  width: 72.91666666666666%;
+  width: 72.91666667%
 }
 
 
@@ -83,8 +93,9 @@ body {
 
 #secondary {
   float: right;
-  margin: 0 1.0416666666666665%;
-  width: 22.916666666666664%;
+  margin: 0 1.0416666667%;
+  #paddings > .top(48);
+  width: 22.9166666667%;
 }
 
 // FOOTER
